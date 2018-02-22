@@ -1,14 +1,24 @@
 package com.cyril.wechat.bean.param.golbal;
 
+import java.io.Serializable;
+
 /**
  * 获取全局access_token参数
  * 
  * @author Cyril
  * @date 2018年2月20日
  */
-public class WechatGolbalAccessTokenParam {
+public class WechatGolbalAccessTokenParam implements Serializable {
+	private static final long serialVersionUID = -5998715633982430439L;
+
+	/**
+	 * 第三方用户唯一凭证
+	 */
 	private String appId;
 	
+	/**
+	 * 第三方用户唯一凭证密钥
+	 */
 	private String appSecret;
 
 	public String getAppId() {
@@ -25,5 +35,10 @@ public class WechatGolbalAccessTokenParam {
 
 	public void setAppSecret(String appSecret) {
 		this.appSecret = appSecret;
+	}
+
+	@Override
+	public String toString() {
+		return "WechatGolbalAccessTokenParam [appId=" + appId + ", appSecret=" + appSecret + "]";
 	}
 }

@@ -9,7 +9,7 @@ import com.cyril.wechat.bean.result.WechatBaseResult;
  * @date 2018年2月20日
  */
 public class WechatGolbalAccessTokenResult extends WechatBaseResult {
-	private static final long serialVersionUID = -8261065122357998907L;
+	private static final long serialVersionUID = -6802621853818306055L;
 
 	/**
 	 * 微信全局凭证
@@ -35,5 +35,10 @@ public class WechatGolbalAccessTokenResult extends WechatBaseResult {
 
 	public void setExpires_in(int expires_in) {
 		this.expires_in = expires_in;
+	}
+
+	@Override
+	public String toString() {
+		return "WechatGolbalAccessTokenResult [access_token=" + access_token + ", expires_in=" + expires_in + "]";
 	}
 }

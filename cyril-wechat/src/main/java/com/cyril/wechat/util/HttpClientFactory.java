@@ -9,6 +9,7 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 import org.apache.commons.httpclient.params.HttpClientParams;
 import org.apache.commons.httpclient.params.HttpMethodParams;
+import static com.cyril.wechat.common.WechatPropertiesFileNameEnum.*;
 
 /**
  * HttpClient工厂
@@ -18,7 +19,6 @@ import org.apache.commons.httpclient.params.HttpMethodParams;
  */
 class HttpClientFactory {
 	private static HttpClientFactory instance;
-	private static final String WECHAT_CONFIG = "wechat.properties";
 	private HttpClientHelper helper;
 	
 	static HttpClientFactory getInstance() {
@@ -38,12 +38,13 @@ class HttpClientFactory {
 	}
 	
 	private void initialize() {
+		String wechatConfig = WECHAT.getName();
 		this.helper = new HttpClientHelper();
-		this.helper.setConnectionTimeOut(PropertiesUtil.getPropertyInt(HTTPCLIENT_CONNECTION_TIMEOUT.getPropertiesKey(), WECHAT_CONFIG, 30000));
-		this.helper.setSoTimeout(PropertiesUtil.getPropertyInt(HTTPCLIENT_SO_TIMEOUT.getPropertiesKey(), WECHAT_CONFIG, 60000));
-		this.helper.setDefaultMaxConnectionsPerHost(PropertiesUtil.getPropertyInt(HTTPCLIENT_DEFAULT_MAX_CONNECTIONS_PER_HOST.getPropertiesKey(), WECHAT_CONFIG, 1024));
-		this.helper.setMaxTotalConnections(PropertiesUtil.getPropertyInt(HTTPCLIENT_MAX_TOTAL_CONNECTIONS.getPropertiesKey(), WECHAT_CONFIG, 10240));
-		this.helper.setCharSet(PropertiesUtil.getPropertyString(HTTPCLIENT_CHATSET.getPropertiesKey(), WECHAT_CONFIG, "UTF-8"));
+		this.helper.setConnectionTimeOut(PropertiesUtil.getPropertyInt(HTTPCLIENT_CONNECTION_TIMEOUT.getPropertiesKey(), wechatConfig, 30000));
+		this.helper.setSoTimeout(PropertiesUtil.getPropertyInt(HTTPCLIENT_SO_TIMEOUT.getPropertiesKey(), wechatConfig, 60000));
+		this.helper.setDefaultMaxConnectionsPerHost(PropertiesUtil.getPropertyInt(HTTPCLIENT_DEFAULT_MAX_CONNECTIONS_PER_HOST.getPropertiesKey(), wechatConfig, 1024));
+		this.helper.setMaxTotalConnections(PropertiesUtil.getPropertyInt(HTTPCLIENT_MAX_TOTAL_CONNECTIONS.getPropertiesKey(), wechatConfig, 10240));
+		this.helper.setCharSet(PropertiesUtil.getPropertyString(HTTPCLIENT_CHATSET.getPropertiesKey(), wechatConfig, "UTF-8"));
 	}
 	
 	public HttpClient getHttpClient() {

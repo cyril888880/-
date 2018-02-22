@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @date 2018年2月19日
  */
 public class WechatBaseResult implements Serializable {
-	private static final long serialVersionUID = -3316804360232162221L;
+	private static final long serialVersionUID = -1323879722879395427L;
 
 	/**
 	 * 错误码
@@ -35,5 +35,10 @@ public class WechatBaseResult implements Serializable {
 
 	public void setErrmsg(String errmsg) {
 		this.errmsg = errmsg;
+	}
+
+	@Override
+	public String toString() {
+		return "WechatBaseResult [errcode=" + errcode + ", errmsg=" + errmsg + "]";
 	}
 }
