@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- 此处value可改为根据pom中profile配置不同值 -->
+	<property name="CONSOLE_PATTERN" value="[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%thread] %logger{60} - %msg%n" />
+	<property name="FILE_PATTERN" value="[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%thread] %logger{60} - %msg%n" />
+	<property name="FILE_NAME_PATTERN" value="/E:/log/wechat-%d{yyyy-MM-dd}/wechat-%i.log" />
+	<property name="CHARSET" value="UTF-8" />
+	<property name="FILE_MAX_DATE" value="30" />
+	<property name="FILE_MAX_SIZE" value="100MB" />
+	<property name="LEVEL" value="debug"></property>
+
+	<!-- ch.qos.logback.core.ConsoleAppender 控制台输出 -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${CONSOLE_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 每天生成一个日志, 最大100M, 保存30天 -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<!-- 输出文件地址 -->
+			<fileNamePattern>${FILE_NAME_PATTERN}</fileNamePattern>
+			<MaxHistory>${FILE_MAX_DATE}</MaxHistory>
+			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>${FILE_MAX_SIZE}</MaxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${FILE_PATTERN}</pattern>
+			<charset>${CHARSET}</charset>
+		</encoder>
+	</appender>
+
+	<!-- 日志级别 -->
+	<root>
+		<level value="${LEVEL}" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+	
+</configuration> 
