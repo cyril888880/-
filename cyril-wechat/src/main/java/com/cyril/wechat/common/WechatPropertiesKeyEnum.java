@@ -12,7 +12,8 @@ public enum WechatPropertiesKeyEnum {
 	HTTPCLIENT_DEFAULT_MAX_CONNECTIONS_PER_HOST("httpclient.default.max.connections.per.host"),
 	HTTPCLIENT_MAX_TOTAL_CONNECTIONS("httpclient.max.total.connections"),
 	HTTPCLIENT_CHATSET("httpclient.charset"),
-	WECHAT_DOMAIN_NAME("wechat.domain.name");
+	WECHAT_DOMAIN_NAME("wechat.domain.name"),
+	WECHAT_TOKEN("wechat.token");
 	
 	private final String propertiesKey;
 

@@ -21,6 +21,16 @@ public class WechatGolbalAccessTokenParam implements Serializable {
 	 */
 	private String appSecret;
 
+	public WechatGolbalAccessTokenParam() {
+		super();
+	}
+
+	public WechatGolbalAccessTokenParam(String appId, String appSecret) {
+		super();
+		this.appId = appId;
+		this.appSecret = appSecret;
+	}
+
 	public String getAppId() {
 		return appId;
 	}

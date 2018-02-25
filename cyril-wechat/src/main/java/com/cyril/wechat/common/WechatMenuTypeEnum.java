@@ -7,24 +7,25 @@ package com.cyril.wechat.common;
  * @date 2018年2月22日
  */
 public enum WechatMenuTypeEnum {
-	VIEW("view", "网页类型"),
-	CLICK("click", "点击类型"),
-	MINIPROGRAM("miniprogram", "小程序类型");
+	CLICK("click"),
+	VIEW("view"),
+	SCANCODE_PUSH("scancode_push"),
+	SCANCODE_WAITMSG("scancode_waitmsg"),
+	PIC_SYSPHOTO("pic_sysphoto"),
+	PIC_PHOTO_OR_ALBUM("pic_photo_or_album"),
+	PIC_WEXIN("pic_weixin"),
+	LOCATION_SELECT("location_select"),
+	MEDIA_ID("media_id"),
+	VIEW_LIMITED("view_limited"),
+	MINIPROGRAM("miniprogram");
 	
-	private WechatMenuTypeEnum(String type, String desc) {
+	private WechatMenuTypeEnum(String type) {
 		this.type = type;
-		this.desc = desc;
 	}
 
 	private final String type;
 	
-	private final String desc;
-
 	public String getType() {
 		return type;
-	}
-
-	public String getDesc() {
-		return desc;
 	}
 }
