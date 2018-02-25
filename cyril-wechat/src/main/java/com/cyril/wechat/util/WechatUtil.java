@@ -6,8 +6,10 @@ import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson.JSONObject;
 import com.cyril.wechat.bean.param.golbal.WechatGolbalAccessTokenParam;
 import com.cyril.wechat.bean.param.menu.WechatMenuButtonParam;
+import com.cyril.wechat.bean.param.menu.WechatMenuConditionalButtonParam;
 import com.cyril.wechat.bean.result.WechatBaseResult;
 import com.cyril.wechat.bean.result.golbal.WechatGolbalAccessTokenResult;
+import com.cyril.wechat.bean.result.menu.WechatCreateConditionalMenuResult;
 import com.cyril.wechat.bean.result.menu.WechatMenuResult;
 import com.cyril.wechat.exception.WechatException;
 
@@ -63,6 +65,18 @@ public abstract class WechatUtil {
 	public static WechatBaseResult deleteMenu(String accessToken) throws WechatException {
 		String url = WechatUrlUtil.getDeleteMenuUrl(accessToken);
 		return sendGetForWechat(url, WechatBaseResult.class);
+	}
+	
+	/**
+	 * 创建微信个性化菜单
+	 * @param params
+	 * @param accessToken
+	 * @return
+	 * @throws WechatException
+	 */
+	public static WechatCreateConditionalMenuResult createConditionalMenu(WechatMenuConditionalButtonParam params, String accessToken) throws WechatException {
+		String url = WechatUrlUtil.createConditionalMenuUrl(accessToken);
+		return sendPostForWechat(url, WechatCreateConditionalMenuResult.class, params);
 	}
 	
 	private static <T extends WechatBaseResult> T sendGetForWechat(String url, Class<T> resultType) throws WechatException {

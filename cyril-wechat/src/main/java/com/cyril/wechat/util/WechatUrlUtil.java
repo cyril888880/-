@@ -1,9 +1,6 @@
 package com.cyril.wechat.util;
 
-import static com.cyril.wechat.common.WechatUrlPropertiesKeyEnum.GLOBAL_ACCESS_TOKEN_URL;
-import static com.cyril.wechat.common.WechatUrlPropertiesKeyEnum.MENU_CREATE_URL;
-import static com.cyril.wechat.common.WechatUrlPropertiesKeyEnum.MENU_DELETE_URL;
-import static com.cyril.wechat.common.WechatUrlPropertiesKeyEnum.MENU_FIND_URL;
+import static com.cyril.wechat.common.WechatUrlPropertiesKeyEnum.*;
 
 import com.cyril.wechat.common.WechatDomainNameEnum;
 import com.cyril.wechat.common.WechatPropertiesFileNameEnum;
@@ -67,6 +64,16 @@ abstract class WechatUrlUtil {
 	 */
 	static String getDeleteMenuUrl(String accessToken) {
 		return getUrl(MENU_DELETE_URL.getKey())
+				.replace("ACCESS_TOKEN", accessToken);
+	}
+	
+	/**
+	 * 获取创建个性菜单URL
+	 * @param accessToken
+	 * @return
+	 */
+	static String createConditionalMenuUrl(String accessToken) {
+		return getUrl(MENU_CREATE_CONDITIONAL_URL.getKey())
 				.replace("ACCESS_TOKEN", accessToken);
 	}
 	
