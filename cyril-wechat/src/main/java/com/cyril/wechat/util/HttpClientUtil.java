@@ -86,6 +86,7 @@ public abstract class HttpClientUtil {
 	
 	private static PostMethod loadPostMethod(String targetUrl, String params) {
 		PostMethod postMethod = new PostMethod(targetUrl);
+		postMethod.getParams().setContentCharset("UTF-8");
 		postMethod.setRequestHeader("Content-Type","application/json;charset=UTF-8");
 		postMethod.setRequestEntity(loadRequestEntity(params));
 		return postMethod;

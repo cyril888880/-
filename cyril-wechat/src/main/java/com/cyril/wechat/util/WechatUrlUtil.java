@@ -77,6 +77,36 @@ abstract class WechatUrlUtil {
 				.replace("ACCESS_TOKEN", accessToken);
 	}
 	
+	/**
+	 * 删除个性化菜单URL
+	 * @param accessToken
+	 * @return
+	 */
+	static String deleteConditionalMenuUrl(String accessToken) {
+		return getUrl(MENU_DELETE_CONDITIONAL_URL.getKey())
+				.replace("ACCESS_TOKEN", accessToken);
+	}
+	
+	/**
+	 * 测试个性化菜单匹配结果URL
+	 * @param accessToken
+	 * @return
+	 */
+	static String testConditionMenuUrl(String accessToken) {
+		return getUrl(MENU_TEST_CONDITIONAL_URL.getKey())
+				.replace("ACCESS_TOKEN", accessToken);
+	}
+	
+	/**
+	 * 获取自定义菜单配置URL
+	 * @param accessToken
+	 * @return
+	 */
+	static String configMenuUrl(String accessToken) {
+		return getUrl(MENU_CONFIG_URL.getKey())
+				.replace("ACCESS_TOKEN", accessToken);
+	}
+	
 	private static String getUrl(String key) {
 		return DOMAIN_NAME + PropertiesUtil.getPropertyString(key, WechatPropertiesFileNameEnum.WECHAT_URL.getName());
 	}
