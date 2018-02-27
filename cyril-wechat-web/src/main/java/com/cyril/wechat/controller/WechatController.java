@@ -19,6 +19,13 @@ import com.cyril.wechat.bean.msg.menu.WechatMenuPicWeixinEvent;
 import com.cyril.wechat.bean.msg.menu.WechatMenuScancodePushEvent;
 import com.cyril.wechat.bean.msg.menu.WechatMenuScancodeWaitmsgEvent;
 import com.cyril.wechat.bean.msg.menu.WechatMenuViewEvent;
+import com.cyril.wechat.bean.msg.message.WechatImageMsg;
+import com.cyril.wechat.bean.msg.message.WechatLinkMsg;
+import com.cyril.wechat.bean.msg.message.WechatLocationMsg;
+import com.cyril.wechat.bean.msg.message.WechatShortVideoMsg;
+import com.cyril.wechat.bean.msg.message.WechatTextMsg;
+import com.cyril.wechat.bean.msg.message.WechatVideoMsg;
+import com.cyril.wechat.bean.msg.message.WechatVoiceMsg;
 import com.cyril.wechat.common.WechatMsgEventTypeEnum;
 import com.cyril.wechat.common.WechatMsgTypeEnum;
 import com.cyril.wechat.helper.WechatSignatureHelper;
@@ -80,6 +87,20 @@ public class WechatController {
 		switch (getMsgType(wechatXmlHelper)) {
 		case EVENT :
 			return processEvent(wechatXmlHelper);
+		case TEXT :
+			return processText(wechatXmlHelper.parseObject(WechatTextMsg.class));
+		case IMAGE : 
+			return processImage(wechatXmlHelper.parseObject(WechatImageMsg.class));
+		case VOICE : 
+			return processVoice(wechatXmlHelper.parseObject(WechatVoiceMsg.class));
+		case VIDEO : 
+			return processVideo(wechatXmlHelper.parseObject(WechatVideoMsg.class));
+		case SHORT_VIDEO :
+			return processShortVideo(wechatXmlHelper.parseObject(WechatShortVideoMsg.class));
+		case LOCATION : 
+			return processLocation(wechatXmlHelper.parseObject(WechatLocationMsg.class));
+		case LINK : 
+			return processLink(wechatXmlHelper.parseObject(WechatLinkMsg.class));
 		default :
 			return SUCCESS;
 		}
@@ -87,6 +108,34 @@ public class WechatController {
 	
 	private WechatMsgTypeEnum getMsgType(WechatXmlHelper wechatXmlHelper) {
 		return WechatMsgTypeEnum.getMsgType(wechatXmlHelper.getElementText("MsgType"));
+	}
+	
+	private String processText(WechatTextMsg msg) {
+		return SUCCESS;
+	}
+	
+	private String processImage(WechatImageMsg msg) {
+		return SUCCESS;
+	}
+	
+	private String processVoice(WechatVoiceMsg msg) {
+		return SUCCESS;
+	}
+	
+	private String processVideo(WechatVideoMsg msg) {
+		return SUCCESS;
+	}
+	
+	private String processShortVideo(WechatShortVideoMsg msg) {
+		return SUCCESS;
+	}
+	
+	private String processLocation(WechatLocationMsg msg) {
+		return SUCCESS;
+	}
+	
+	private String processLink(WechatLinkMsg msg) {
+		return SUCCESS;
 	}
 	
 	private String processEvent(WechatXmlHelper wechatXmlHelper) throws JAXBException {

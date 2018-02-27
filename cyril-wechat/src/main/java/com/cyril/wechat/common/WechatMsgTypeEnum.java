@@ -7,7 +7,14 @@ package com.cyril.wechat.common;
  * @date 2018年2月23日
  */
 public enum WechatMsgTypeEnum {
-	EVENT("event");
+	EVENT("event"),
+	TEXT("text"),
+	IMAGE("image"),
+	VOICE("voice"),
+	VIDEO("video"),
+	SHORT_VIDEO("shortvideo"),
+	LOCATION("location"),
+	LINK("link");
 	
 	WechatMsgTypeEnum(String type) {
 		this.type = type;
