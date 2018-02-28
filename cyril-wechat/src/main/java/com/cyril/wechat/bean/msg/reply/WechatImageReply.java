@@ -8,14 +8,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.cyril.wechat.common.WechatReplyMsgTypeEnum;
 
 /**
- * 回复微信文本消息
+ * 回复图片消息
  * 
  * @author Cyril
  * @date 2018年2月28日
  */
 @XmlRootElement(name="xml")
-public class WechatTextReply implements Serializable{
-	private static final long serialVersionUID = -7324965925457461521L;
+public class WechatImageReply implements Serializable{
+	private static final long serialVersionUID = -5319628547546234448L;
 
 	/**
 	 * 接收方帐号（收到的OpenID）
@@ -33,14 +33,14 @@ public class WechatTextReply implements Serializable{
 	private Integer createTime;
 	
 	/**
-	 * text类型
+	 * image类型
 	 */
-	private WechatReplyMsgTypeEnum msgType = WechatReplyMsgTypeEnum.TEXT;
+	private WechatReplyMsgTypeEnum msgType = WechatReplyMsgTypeEnum.IMAGE;
 	
 	/**
-	 * 回复的消息内容（换行：在content中能够换行，微信客户端就支持换行显示）
+	 * 通过素材管理中的接口上传多媒体文件，得到的id
 	 */
-	private String content;
+	private String mediaId;
 	
 	@XmlElement(name = "FromUserName")
 	public String getFromUserName() {
@@ -57,15 +57,16 @@ public class WechatTextReply implements Serializable{
 		return msgType.getType();
 	}
 
-	@XmlElement(name = "Content")
-	public String getContent() {
-		return content;
+	@XmlElement(name = "MediaId")
+	public String getMediaId() {
+		return mediaId;
 	}
-
+	
 	@XmlElement(name = "ToUserName")
 	public String getToUserName() {
 		return toUserName;
 	}
+
 
 	public void setToUserName(String toUserName) {
 		this.toUserName = toUserName;
@@ -79,13 +80,13 @@ public class WechatTextReply implements Serializable{
 		this.createTime = createTime;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setMediaId(String mediaId) {
+		this.mediaId = mediaId;
 	}
 
 	@Override
 	public String toString() {
-		return "WechatTextReply [toUserName=" + toUserName + ", fromUserName=" + fromUserName + ", createTime="
-				+ createTime + ", msgType=" + msgType + ", content=" + content + "]";
+		return "WechatImageReply [toUserName=" + toUserName + ", fromUserName=" + fromUserName + ", createTime="
+				+ createTime + ", msgType=" + msgType + ", mediaId=" + mediaId + "]";
 	}
 }

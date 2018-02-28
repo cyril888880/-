@@ -8,14 +8,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.cyril.wechat.common.WechatReplyMsgTypeEnum;
 
 /**
- * 回复微信文本消息
+ * 回复语音消息
  * 
  * @author Cyril
  * @date 2018年2月28日
  */
 @XmlRootElement(name="xml")
-public class WechatTextReply implements Serializable{
-	private static final long serialVersionUID = -7324965925457461521L;
+public class WechatVideoReply implements Serializable{
+	private static final long serialVersionUID = -6385811848327080839L;
 
 	/**
 	 * 接收方帐号（收到的OpenID）
@@ -33,14 +33,34 @@ public class WechatTextReply implements Serializable{
 	private Integer createTime;
 	
 	/**
-	 * text类型
+	 * video类型
 	 */
-	private WechatReplyMsgTypeEnum msgType = WechatReplyMsgTypeEnum.TEXT;
+	private WechatReplyMsgTypeEnum msgType = WechatReplyMsgTypeEnum.VIDEO;
 	
 	/**
-	 * 回复的消息内容（换行：在content中能够换行，微信客户端就支持换行显示）
+	 * 通过素材管理中的接口上传多媒体文件，得到的id
 	 */
-	private String content;
+	private String mediaId;
+	
+	/**
+	 * 视频消息的标题
+	 */
+	private String title;
+	
+	/**
+	 * 视频消息的描述
+	 */
+	private String description;
+	
+	@XmlElement(name = "Title")
+	public String getTitle() {
+		return title;
+	}
+
+	@XmlElement(name = "Description")
+	public String getDescription() {
+		return description;
+	}
 	
 	@XmlElement(name = "FromUserName")
 	public String getFromUserName() {
@@ -57,15 +77,16 @@ public class WechatTextReply implements Serializable{
 		return msgType.getType();
 	}
 
-	@XmlElement(name = "Content")
-	public String getContent() {
-		return content;
+	@XmlElement(name = "MediaId")
+	public String getMediaId() {
+		return mediaId;
 	}
-
+	
 	@XmlElement(name = "ToUserName")
 	public String getToUserName() {
 		return toUserName;
 	}
+
 
 	public void setToUserName(String toUserName) {
 		this.toUserName = toUserName;
@@ -79,13 +100,22 @@ public class WechatTextReply implements Serializable{
 		this.createTime = createTime;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setMediaId(String mediaId) {
+		this.mediaId = mediaId;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
 	public String toString() {
-		return "WechatTextReply [toUserName=" + toUserName + ", fromUserName=" + fromUserName + ", createTime="
-				+ createTime + ", msgType=" + msgType + ", content=" + content + "]";
+		return "WechatVideoReply [toUserName=" + toUserName + ", fromUserName=" + fromUserName + ", createTime="
+				+ createTime + ", msgType=" + msgType + ", mediaId=" + mediaId + ", title=" + title + ", description="
+				+ description + "]";
 	}
 }

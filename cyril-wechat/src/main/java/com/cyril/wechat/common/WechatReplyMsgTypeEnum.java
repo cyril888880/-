@@ -7,7 +7,12 @@ package com.cyril.wechat.common;
  * @date 2018年2月28日
  */
 public enum WechatReplyMsgTypeEnum {
-	TEXT("text");
+	TEXT("text"),
+	IMAGE("image"),
+	VOICE("voice"),
+	VIDEO("video"),
+	MUSIC("music"),
+	NEWS("news");
 	
 	/**
 	 * 回复消息类型
