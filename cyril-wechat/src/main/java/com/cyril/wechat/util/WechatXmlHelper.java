@@ -1,9 +1,11 @@
 package com.cyril.wechat.util;
 
 import java.io.ByteArrayInputStream;
+import java.io.StringWriter;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.dom4j.Document;
@@ -43,5 +45,15 @@ public class WechatXmlHelper {
         Unmarshaller unmarshaller = context.createUnmarshaller(); 
         Object object = unmarshaller.unmarshal(new ByteArrayInputStream(this.xml.getBytes()));
         return (T) object;
+	}
+	
+	public static String parseXml(Object obj,Class<?> type) throws JAXBException {
+		JAXBContext context = JAXBContext.newInstance(type);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.setProperty(Marshaller.JAXB_ENCODING,"UTF-8");
+        StringWriter writer = new StringWriter();
+        marshaller.marshal(obj,writer);
+        return writer.toString();
 	}
 }

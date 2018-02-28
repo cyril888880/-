@@ -13,7 +13,11 @@ public enum WechatMsgEventTypeEnum {
 	PIC_SYSPHOTO("pic_sysphoto", "弹出系统拍照发图的事件推送"),
 	PIC_PHOTO_OR_ALBUM("pic_photo_or_album", "弹出拍照或者相册发图的事件推送"),
 	PIC_WEIXIN("pic_weixin", "弹出微信相册发图器的事件推送"),
-	LOCATION_SELECT("location_select", "弹出地理位置选择器的事件推送");
+	LOCATION_SELECT("location_select", "弹出地理位置选择器的事件推送"),
+	SUBSCRIBE("subscribe", "关注事件"),
+	UNSUBSCRIBE("unsubscribe", "取消关注事件"),
+	SCAN("SCAN", "用户已关注时扫码事件推送"),
+	LOCATION("LOCATION", "上报地理位置事件");
 	
 	WechatMsgEventTypeEnum(String type, String desc) {
 		this.type = type;

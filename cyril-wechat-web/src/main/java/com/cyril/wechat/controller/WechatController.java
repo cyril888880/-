@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cyril.wechat.bean.msg.event.WechatLocationEvent;
+import com.cyril.wechat.bean.msg.event.WechatScanEvent;
+import com.cyril.wechat.bean.msg.event.WechatSubscribeEvent;
+import com.cyril.wechat.bean.msg.event.WechatUnsubscribeEvent;
 import com.cyril.wechat.bean.msg.menu.WechatMenuClickEvent;
 import com.cyril.wechat.bean.msg.menu.WechatMenuLocationSelectEvent;
 import com.cyril.wechat.bean.msg.menu.WechatMenuPicPhotoOrAlbumEvent;
@@ -156,6 +160,14 @@ public class WechatController {
 			return processPicWeixinEvent(wechatXmlHelper.parseObject(WechatMenuPicWeixinEvent.class));
 		case LOCATION_SELECT :
 			return processLocationSelectEvent(wechatXmlHelper.parseObject(WechatMenuLocationSelectEvent.class));
+		case SUBSCRIBE : 
+			return processSubscribe(wechatXmlHelper.parseObject(WechatSubscribeEvent.class));
+		case UNSUBSCRIBE :
+			return processUnsubscribe(wechatXmlHelper.parseObject(WechatUnsubscribeEvent.class));
+		case SCAN : 
+			return processScan(wechatXmlHelper.parseObject(WechatScanEvent.class));
+		case LOCATION :
+			return processLocation(wechatXmlHelper.parseObject(WechatLocationEvent.class));
 		default :
 			return SUCCESS;
 		}
@@ -194,6 +206,22 @@ public class WechatController {
 	}
 	
 	private String processLocationSelectEvent(WechatMenuLocationSelectEvent event) {
+		return SUCCESS;
+	}
+	
+	private String processSubscribe(WechatSubscribeEvent event) {
+		return SUCCESS;
+	}
+	
+	private String processUnsubscribe(WechatUnsubscribeEvent event) {
+		return SUCCESS;
+	}
+	
+	private String processScan(WechatScanEvent event) {
+		return SUCCESS;
+	}
+	
+	private String processLocation(WechatLocationEvent event) {
 		return SUCCESS;
 	}
 }
